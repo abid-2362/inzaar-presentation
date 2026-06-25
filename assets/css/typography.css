@@ -1,0 +1,144 @@
+:root {
+  /* Dynamic Typography Multipliers adjusted by Settings Panel */
+  --font-scale-heading: 1.0;
+  --font-scale-subheading: 1.0;
+  --font-scale-body: 1.0;
+  --font-scale-label: 0.8;
+  --font-scale-icon: 1.0;
+  --font-scale-caption: 1.0;
+
+  /* Base Font Sizes (Mobile defaults) */
+  --font-size-heading-base: 1.75rem;      /* ~28px */
+  --font-size-subheading-base: 0.95rem;   /* ~15px */
+  --font-size-body-base: 0.875rem;        /* ~14px */
+  --font-size-label-base: 0.875rem;       /* ~14px */
+  --font-size-icon-base: 1.125rem;        /* ~18px */
+  --font-size-caption-base: 0.75rem;      /* ~12px */
+}
+
+/* Responsive Sizing for Large Screens (Laptops, Standard Projectors) */
+@media (min-width: 1024px) {
+  :root {
+    --font-size-heading-base: 2.75rem;      /* 44px */
+    --font-size-subheading-base: 1.05rem;   /* 16.8px */
+    --font-size-body-base: 0.9rem;        /* 14.4px */
+    --font-size-label-base: 1.15rem;       /* 18.4px */
+    --font-size-icon-base: 1.35rem;         /* 21.6px */
+    --font-size-caption-base: 0.8rem;     /* 12.8px */
+  }
+}
+
+/* Responsive Sizing for Short Viewports (Avoid header/footer overlaps) */
+@media (min-width: 1024px) and (max-height: 900px) {
+  :root {
+    --font-size-heading-base: 2.4rem;       /* Scale down from 2.75rem */
+    --font-size-subheading-base: 1.0rem;    /* Scale down from 1.05rem */
+    --font-size-body-base: 0.85rem;         /* Scale down from 0.9rem */
+    --font-size-label-base: 1.05rem;        /* Scale down from 1.15rem */
+    --font-size-icon-base: 1.25rem;         /* Scale down from 1.35rem */
+    --font-size-caption-base: 0.75rem;      /* Scale down from 0.8rem */
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 750px) {
+  :root {
+    --font-size-heading-base: 2.0rem;       /* Scale down further for very short viewports */
+    --font-size-subheading-base: 0.9rem;
+    --font-size-body-base: 0.75rem;
+    --font-size-label-base: 0.9rem;
+    --font-size-icon-base: 1.1rem;
+    --font-size-caption-base: 0.7rem;
+  }
+}
+
+/* Responsive Sizing for Extreme Screens (4K Displays, Large Venue Projectors) */
+@media (min-width: 1800px) {
+  :root {
+    --font-size-heading-base: 4.0rem;      /* 64px */
+    --font-size-subheading-base: 1.35rem;   /* 21.6px */
+    --font-size-body-base: 1.15rem;        /* 18.4px */
+    --font-size-label-base: 1.5rem;        /* 24px */
+    --font-size-icon-base: 1.75rem;        /* 28px */
+    --font-size-caption-base: 1.0rem;       /* 16px */
+  }
+}
+
+/* Computed Typography Sizes (Base * Multiplier) */
+:root {
+  --font-size-heading: calc(var(--font-size-heading-base) * var(--font-scale-heading));
+  --font-size-subheading: calc(var(--font-size-subheading-base) * var(--font-scale-subheading));
+  --font-size-body: calc(var(--font-size-body-base) * var(--font-scale-body));
+  --font-size-label: calc(var(--font-size-label-base) * var(--font-scale-label));
+  --font-size-icon: calc(var(--font-size-icon-base) * var(--font-scale-icon));
+  --font-size-caption: calc(var(--font-size-caption-base) * var(--font-scale-caption));
+}
+
+/* --- TYPOGRAPHY SEMANTIC CLASSES --- */
+
+/* Main Slide Titles (H2) */
+.slide-heading {
+  font-family: 'Newsreader', serif !important;
+  font-size: var(--font-size-heading) !important;
+  color: #ffffff;
+  font-weight: 300 !important;
+  line-height: 1.25 !important;
+}
+
+/* Slide Description / Left-Bordered Subheader */
+.slide-desc {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: var(--font-size-subheading) !important;
+  color: #94A3B8; /* text-on-surface-variant */
+  border-left: 2px solid #C5A059; /* border-heritage-gold */
+  padding-left: 1rem; /* pl-4 */
+  margin-top: 0.5rem; /* mt-2 */
+  line-height: 1.6 !important;
+}
+
+/* Standard Paragraphs & Body Descriptions */
+.slide-body {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: var(--font-size-body) !important;
+  color: #94A3B8; /* text-on-surface-variant */
+  line-height: 1.625 !important;
+}
+
+/* Card titles, tags, and badge text (Uppercase, Heritage Gold by default) */
+.slide-label {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: var(--font-size-label) !important;
+  color: #C5A059; /* text-heritage-gold default */
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* tracking-wider */
+  font-weight: 700 !important; /* font-bold */
+}
+
+/* Material Design Icons in Slide Lists and Footers */
+.slide-icon {
+  font-family: 'Material Symbols Outlined' !important;
+  font-size: var(--font-size-icon) !important;
+  color: #C5A059; /* text-heritage-gold default */
+  font-style: normal !important;
+  font-weight: normal !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+}
+
+/* Small Metadata, Footnotes, or Badges */
+.slide-caption {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: var(--font-size-caption) !important;
+  color: rgba(148, 163, 184, 0.7); /* text-on-surface-variant/70 default */
+  line-height: 1.4 !important;
+}
+
+/* Slide 22 Specific Overrides (Make font sizes smaller and cleaner) */
+#slide-social-geo {
+  --font-size-heading: calc(var(--font-size-heading-base) * var(--font-scale-heading) * 0.72);
+  --font-size-subheading: calc(var(--font-size-subheading-base) * var(--font-scale-subheading) * 0.72);
+  --font-size-body: calc(var(--font-size-body-base) * var(--font-scale-body) * 0.72);
+  --font-size-label: calc(var(--font-size-label-base) * var(--font-scale-label) * 0.72);
+  --font-size-icon: calc(var(--font-size-icon-base) * var(--font-scale-icon) * 0.72);
+  --font-size-caption: calc(var(--font-size-caption-base) * var(--font-scale-caption) * 0.72);
+}

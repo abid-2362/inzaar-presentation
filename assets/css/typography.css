@@ -142,3 +142,85 @@
   --font-size-icon: calc(var(--font-size-icon-base) * var(--font-scale-icon) * 0.72);
   --font-size-caption: calc(var(--font-size-caption-base) * var(--font-scale-caption) * 0.72);
 }
+
+/* --- PRINT MEDIA STYLES (PDF Generation) --- */
+@media print {
+  /* Set layout to landscape and remove browser print margins */
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  /* Reset layout structure for sequential printing */
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #010204 !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide WebGL shader background, glow blobs, and interactive layers */
+  .shader-bg,
+  .ambient-bg,
+  .glass-overlay,
+  header,
+  nav,
+  .nav-bottom,
+  #slide-progress-bar,
+  #autoplay-progress-bar,
+  #settings-panel,
+  #advanced-settings-modal,
+  #help-modal,
+  #book-modal,
+  .fixed,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Allow deck container to expand and stack slides vertically */
+  .slide-deck {
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  /* Force all slides to stack, fill their own printed pages, and show content */
+  .slide {
+    position: relative !important;
+    inset: auto !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    overflow: hidden !important;
+    /* Static premium background gradient matching the interactive shader */
+    background: radial-gradient(circle at center, #030509 0%, #010204 100%) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Neutralize slide reveal animations so all items are fully visible instantly */
+  .reveal-1,
+  .reveal-2,
+  .reveal-3,
+  .reveal-4 {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Disable transitions globally to speed up render times and avoid half-faded assets */
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
